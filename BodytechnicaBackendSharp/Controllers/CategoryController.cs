@@ -23,7 +23,7 @@ public class CategoryController : ControllerBase
         return Ok(result);
     }
     
-    [HttpGet("/Id/{id}")]
+    [HttpGet("Id/{id}")]
     public ActionResult<Category> GetCategoryById(int id)
     {
         var result =  _categoryService.GetCategoryById(id);
@@ -34,7 +34,7 @@ public class CategoryController : ControllerBase
         return result;
     }
     
-    [HttpGet("/Name/{name}")]
+    [HttpGet("Name/{name}")]
     public ActionResult<Category> GetCategoryByName(string name)
     {
         var result =  _categoryService.GetCategoryByName(name);

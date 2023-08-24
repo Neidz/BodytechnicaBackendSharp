@@ -11,7 +11,11 @@ public class Product
     public string? Brand { get; set; }
     public float Weight { get; set; }
     public int Barcode { get; set; }
-    public int? CreatedBy { get; set; }
+    public User User { get; set; } = new ();
+    public int UserId { get; set; }
+    public Category Category { get; set; } = new ();
     public int CategoryId { get; set; }
     public int Score { get; set; }
+
+    public List<Meal> Meals { get; set; } = new ();
 }
