@@ -4,7 +4,8 @@ namespace BodytechnicaBackendSharp.Services.CategoryService;
 
 public interface ICategoryService
 {
-    List<Category> GetAllCategories();
-    Category? GetCategoryByName(string name);
-    Category? GetCategoryById(int id);
+    Task<List<Category>> GetAllCategories();
+    Task<Category?> GetCategoryByName(string name);
+    Task<Category?> GetCategoryById(int id);
+    Task<Category> CreateCategory(string name);
 }

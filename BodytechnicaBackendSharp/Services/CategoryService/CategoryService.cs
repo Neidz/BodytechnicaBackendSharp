@@ -13,23 +13,34 @@ public class CategoryService : ICategoryService
     {
         _context = context;
     }
-    
-    public List<Category> GetAllCategories()
+
+    public async Task<List<Category>> GetAllCategories()
     {
-        return _context.Categories.ToList();
+        List<Category> categories = await _context.Categories.ToListAsync();
+
+        return categories;
     }
 
-    public Category? GetCategoryByName(string name)
+    public async Task<Category?> GetCategoryByName(string name)
     {
-        var category = _context.Categories.Single(c => c.Name == name);
+        Category? category = await _context.Categories.SingleOrDefaultAsync(c => c.Name == name);
 
         return category;
     }
 
-    public Category? GetCategoryById(int id)
+    public async Task<Category?> GetCategoryById(int id)
     {
-        var category = _context.Categories.Single(c => c.Id == id);
+        Category? category = await _context.Categories.SingleOrDefaultAsync(c => c.Id == id);
 
         return category;
+    }
+
+    public async Task<Category> CreateCategory(string name)
+    {
+        Category newCategory = new() { Name = name };
+        await _context.Categories.AddAsync(newCategory);
+        await _context.SaveChangesAsync();
+
+        return newCategory;
     }
 }
